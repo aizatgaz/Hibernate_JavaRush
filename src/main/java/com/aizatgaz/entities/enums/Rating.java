@@ -1,4 +1,4 @@
-package com.aizatgaz.entities;
+package com.aizatgaz.entities.enums;
 
 import lombok.ToString;
 
@@ -14,5 +14,9 @@ public enum Rating {
 
     Rating(String rating) {
         value = rating.toUpperCase();
+    }
+
+    public String getValue() {
+        return value;
     }
 }

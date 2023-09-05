@@ -13,47 +13,47 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@ToString
-public class Stuff {
+public class Staff {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "staff_id")
     private Byte id;
 
-    @Column(name = "first_name", length = 45)
+    @Column(name = "first_name", length = 45, nullable = false)
     private String firstName;
 
-    @Column(name = "last_name", length = 45)
+    @Column(name = "last_name", length = 45, nullable = false)
     private String lastName;
 
     @ManyToOne
-    @Column(name = "address_id")
+    @JoinColumn(name = "address_id", nullable = false)
     private Address address;
 
     @Column(columnDefinition = "blob")
-    @Type(type = "blob")
-    private Blob picture;
+    @Lob
+    private byte[] picture;
 
     @Column(length = 50)
     private String email;
 
-    @OneToOne
-    @JoinColumn(name = "store_id")
+    @ManyToOne
+    @JoinColumn(name = "store_id", nullable = false)
     private Store store;
 
-    @Column(columnDefinition = "tinyint", nullable = false)
-    @Type(type = "tinyint")
-    private boolean active;
+    @Column(name = "active", columnDefinition = "bit", nullable = false)
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private boolean isActive;
 
-    @Column(length = 16)
+    @Column(length = 16, nullable = false)
     private String username;
 
     @Column(length = 40)
     private String password;
 
-    @Column(name = "last_update", columnDefinition = "timestamp")
+    @Column(name = "last_update", columnDefinition = "timestamp", nullable = false)
     @UpdateTimestamp
     private LocalDateTime lastUpdate;
+
+
 }

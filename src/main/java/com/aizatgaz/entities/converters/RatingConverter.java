@@ -1,5 +1,6 @@
-package com.aizatgaz.entities.enums;
+package com.aizatgaz.entities.converters;
 
+import com.aizatgaz.entities.enums.Rating;
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;
 

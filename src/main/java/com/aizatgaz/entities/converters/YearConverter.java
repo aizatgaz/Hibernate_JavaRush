@@ -1,4 +1,4 @@
-package com.aizatgaz.entities.enums;
+package com.aizatgaz.entities.converters;
 
 import jakarta.persistence.AttributeConverter;
 import jakarta.persistence.Converter;

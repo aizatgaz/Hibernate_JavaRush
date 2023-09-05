@@ -1,4 +1,4 @@
-package com.aizatgaz.entities;
+package com.aizatgaz.entities.enums;
 
 import static java.util.Objects.isNull;
 

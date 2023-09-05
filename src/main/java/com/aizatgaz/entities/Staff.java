@@ -17,8 +17,8 @@ public class Staff {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "staff_id")
-    private Byte id;
+    @Column(name = "staff_id", columnDefinition = "tinyint")
+    private Integer id;
 
     @Column(name = "first_name", length = 45, nullable = false)
     private String firstName;

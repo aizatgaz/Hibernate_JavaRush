@@ -16,8 +16,8 @@ public class Store {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "store_id")
-    private Byte id;
+    @Column(name = "store_id", columnDefinition = "tinyint")
+    private Integer id;
 
     @OneToOne
     @JoinColumn(name = "manager_staff_id", nullable = false)

@@ -17,8 +17,8 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "category_id")
-    private Byte id;
+    @Column(name = "category_id", columnDefinition = "tinyint")
+    private Integer id;
 
     @Column(length = 25, nullable = false)
     private String name;

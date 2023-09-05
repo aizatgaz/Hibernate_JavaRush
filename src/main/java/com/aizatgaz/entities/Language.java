@@ -16,8 +16,8 @@ public class Language {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "language_id")
-    private Byte id;
+    @Column(name = "language_id", columnDefinition = "tinyint")
+    private Integer id;
 
     @Column(columnDefinition = "char", length = 20, nullable = false)
     private String name;

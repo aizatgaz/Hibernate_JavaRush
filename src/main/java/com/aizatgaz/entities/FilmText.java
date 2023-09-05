@@ -13,8 +13,8 @@ import org.hibernate.annotations.Type;
 public class FilmText {
 
     @Id
-    @Column(name = "film_id")
-    private Short id;
+    @Column(name = "film_id", columnDefinition = "smallint")
+    private Integer id;
 
     @Column(nullable = false)
     private String title;

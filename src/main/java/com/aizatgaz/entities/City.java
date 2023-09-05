@@ -16,8 +16,8 @@ public class City {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "city_id")
-    private Short id;
+    @Column(name = "city_id", columnDefinition = "smallint")
+    private Integer id;
 
     @Column(length = 50, nullable = false)
     private String city;

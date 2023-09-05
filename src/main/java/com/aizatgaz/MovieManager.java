@@ -15,24 +15,25 @@ import java.time.Year;
 import java.util.*;
 
 
+@Getter
 public class MovieManager {
 
-    private ActorDAO actorDAO;
-    private AddressDAO addressDAO;
-    private CategoryDAO categoryDAO;
-    private CityDAO cityDAO;
-    private CountryDAO countryDAO;
-    private CustomerDAO customerDAO;
-    private FilmDAO filmDAO;
-    private FilmTextDAO filmTextDAO;
-    private InventoryDAO inventoryDAO;
-    private LanguageDAO languageDAO;
-    private PaymentDAO paymentDAO;
-    private RentalDAO rentalDAO;
-    private StaffDAO staffDAO;
-    private StoreDAO storeDAO;
+    private final ActorDAO actorDAO;
+    private final AddressDAO addressDAO;
+    private final CategoryDAO categoryDAO;
+    private final CityDAO cityDAO;
+    private final CountryDAO countryDAO;
+    private final CustomerDAO customerDAO;
+    private final FilmDAO filmDAO;
+    private final FilmTextDAO filmTextDAO;
+    private final InventoryDAO inventoryDAO;
+    private final LanguageDAO languageDAO;
+    private final PaymentDAO paymentDAO;
+    private final RentalDAO rentalDAO;
+    private final StaffDAO staffDAO;
+    private final StoreDAO storeDAO;
 
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
     {
         Properties properties = new Properties();
@@ -83,34 +84,36 @@ public class MovieManager {
         return sessionFactory;
     }
 
-    //creating a random customer
+    //creating a random customer from current customers
     public Customer createCustomer() {
         Customer customer = new Customer();
 
         List<Customer> all = customerDAO.getAll();
+
         int name = (int) (Math.random() * all.size());
         int lastname = (int) (Math.random() * all.size());
         int address = (int) (Math.random() * all.size());
         List<Store> stores = storeDAO.getAll();
-        int b = (int) (Math.random() * stores.size());
+        int store = (int) (Math.random() * stores.size());
 
         customer.setActive(true);
         customer.setCreateDate(LocalDateTime.now());
         customer.setFirstName(all.get(name).getFirstName());
         customer.setLastName(all.get(lastname).getLastName());
         customer.setAddress(all.get(address).getAddress());
-        customer.setStore(stores.get(b));
+        customer.setStore(stores.get(store));
 
         customerDAO.save(customer);
 
         return customer;
     }
 
+    //Returning back to inventory first received from query rented film
     public void returnFilm() {
         rentalDAO.returnFilm();
     }
 
-    //Buying first available film from db for customer
+    //Buying first available film from DB for customer
     public Film buyFilm(Customer customer) {
 
         Store store = customer.getStore();
@@ -175,6 +178,16 @@ public class MovieManager {
     //for testing
     public static void main(String[] args) {
 
+        MovieManager manager = new MovieManager();
+//
+//        Actor actor = new Actor();
+//        actor.setId(205);
+//        actor.setLastName("a1234123sd");
+//        actor.setFirstName("as4134dasd12341234");
+//
+//        manager.actorDAO.update(actor);
+
+        manager.actorDAO.removeById(205);
 
     }
 }

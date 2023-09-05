@@ -18,8 +18,8 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_id")
-    private Short id;
+    @Column(name = "customer_id", columnDefinition = "smallint")
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "store_id", nullable = false)

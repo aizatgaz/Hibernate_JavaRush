@@ -5,9 +5,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.lang.reflect.TypeVariable;
 import java.util.List;
 
 public abstract class AbstractDAO<T> {
+
     private final Class<T> clazz;
     private SessionFactory sessionFactory;
 
@@ -17,7 +19,11 @@ public abstract class AbstractDAO<T> {
     }
 
     public T getById(int id) {
-        return sessionFactory.openSession().get(clazz, (byte) id);
+        TypeVariable<Class<T>>[] typeParameters = clazz.getTypeParameters();
+        for (int i = 0; i < typeParameters.length; i++) {
+            System.out.println(typeParameters[i].getName() + " : " + typeParameters[i].getTypeName());
+        }
+        return sessionFactory.openSession().get(clazz, id);
     }
 
     public List<T> getAll() {
